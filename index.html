@@ -11,7 +11,9 @@
 <body>
   <a-scene>
     <a-camera id="camera" position="0 0 0"></a-camera>
-    <a-entity id="hands" hand-controls="handModel: trackedHands"></a-entity>
+    <a-entity id="hands" hand-controls="handModel: trackedHands">
+      <a-material color="#ff0000"></a-material>
+    </a-entity>
     <a-entity hand-tracking></a-entity>
     <a-entity light="type: ambient; color: white"></a-entity>
     <a-skybox src="https://example.com/skybox.jpg"></a-skybox>
