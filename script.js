@@ -9,16 +9,14 @@ const frame = await session.requestAnimationFrame(referenceSpace);
 
 // Get the pose of the camera and the hands.
 const cameraPose = frame.getPose(referenceSpace, 'viewer');
-const handPoses = frame.getHandPoses();
+const handPoses = handTrackingEntity.handPoses;
 
-// Get the pose of the right hand.
-const rightHandPose = handPoses[1];
+// Update the position and rotation of the camera and the hands in the scene.
+const camera = document.querySelector('#camera');
+camera.setAttribute('position', cameraPose.position);
+camera.setAttribute('rotation', cameraPose.orientation);
 
-// If the right hand is trigger down, create a new sphere at the position of the right hand.
-if (rightHandPose.triggerDown) {
-  const sphereEntity = document.querySelector('#sphere');
-  sphereEntity.setAttribute('position', rightHandPose.position);
-}
+const handsEntity = document.querySelector('#hands');
+handsEntity.setAttribute('position', handPoses[0].position);
+handsEntity.setAttribute('rotation', handPoses[0].orientation);
 
-// Update the position and rotation of the sphere in the scene.
-sphereEntity.setAttribute('rotation', rightHandPose.orientation);
