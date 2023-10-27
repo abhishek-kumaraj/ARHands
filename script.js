@@ -20,3 +20,5 @@ const handsEntity = document.querySelector('#hands');
 handsEntity.setAttribute('position', handPoses[0].position);
 handsEntity.setAttribute('rotation', handPoses[0].orientation);
 
+// Set the color of the hands entity.
+handsEntity.setAttribute('material', 'color: #ff0000');
